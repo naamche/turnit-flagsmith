@@ -1,0 +1,3 @@
+bucket  = "turnit-terraform-state-staging"
+key     = "turnit-flagsmith/terraform.tfstate"
+region  = "us-east-2"

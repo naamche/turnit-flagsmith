@@ -1,9 +1,9 @@
 data "aws_vpc" "vpc" {
-  id = "${var.parameter_store_path_name}resource/VPC_ID"
+  id = var.vpc_id
 }
 
 data "aws_lb" "lb" {
-  id = "${var.parameter_store_path_name}resource/LB_ID"
+  name = var.lb_name
 }
 
 data "aws_lb_listener" "lb_listener" {
@@ -12,27 +12,31 @@ data "aws_lb_listener" "lb_listener" {
 }
 
 data "aws_subnet" "subnet" {
-  id = "${var.parameter_store_path_name}resource/SUBNET_ID"
+  id = var.subnet_id
 }
 
-data "aws_security_group" "vpc_security_group" {
-  id = "${var.parameter_store_path_name}resource/VPC_SECURITY_GROUP_ID"
+data "aws_security_group" "ec2_security_group" {
+  id = var.ec2_security_group_id
 }
 
 data "aws_iam_role" "ecs_execution_role" {
-  name = "${var.parameter_store_path_name}resource/ECS_EXECUTION_ROLE_NAME"
+  name = var.ecs_execution_role_name
 }
 
 data "aws_iam_role" "ecs_task_role" {
-  name = "${var.parameter_store_path_name}resource/ECS_TASK_ROLE_NAME"
+  name = var.ecs_task_role_name
 }
 
-data "aws_iam_role" "codedeploy_iam_role" {
-  name = "${var.parameter_store_path_name}resource/CODEDEPLOY_IAM_ROLE_NAME"
+data "aws_iam_role" "codedeploy_role" {
+  name = var.codedeploy_role_name
 }
 
-data "aws_iam_instance_profile" "iam_instance_profile" {
-  name = "${var.parameter_store_path_name}resource/IAM_INSTANCE_PROFILE_NAME"
+data "aws_iam_instance_profile" "ec2_instance_profile" {
+  name = var.ec2_instance_profile_name
+}
+
+data "aws_route53_zone" "route53_zone" {
+  name = var.route53_zone_name
 }
 
 data "aws_ssm_parameter" "domain_name" {
@@ -57,4 +61,3 @@ data "aws_ssm_parameters_by_path" "flagsmith_processor_ssm_parameters" {
 
 data "aws_caller_identity" "current_account" {}
 data "aws_region" "current_region" {}
-data "aws_route53_zone" "route53_zone" {}

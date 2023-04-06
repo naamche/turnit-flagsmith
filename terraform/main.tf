@@ -1,9 +1,11 @@
 terraform {
-  backend "s3" {}
+  backend "s3" {
+    profile = "turnit-staging"
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.53.0"
+      version = "~> 4.61.0"
     }
   }
 }
@@ -16,4 +18,5 @@ provider "aws" {
       "Manager" : "Terraform"
     }
   }
+  profile = "turnit-staging"
 }

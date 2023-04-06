@@ -19,4 +19,8 @@ resource "aws_ecs_service" "default_ecs_service" {
     container_name   = var.application_name
     container_port   = var.application_port
   }
+
+  deployment_controller {
+    type = "CODE_DEPLOY"
+  }
 }

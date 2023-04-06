@@ -59,7 +59,7 @@ resource "aws_ecs_task_definition" "default_ecs_task_definition" {
       dependsOn : [
         {
           "containerName" : "postgres",
-          "condition" : "HEALTHY"
+          "condition" : "START"
         }
       ],
       links : ["postgres:postgres"],
@@ -74,15 +74,16 @@ resource "aws_ecs_task_definition" "default_ecs_task_definition" {
     {
       name : "flagsmith_processor"
       image : "flagsmith/flagsmith:latest"
+      memory : 320
       entryPoint : ["python", "manage.py", "run_processor", "--sleepintervalms", "500"],
       dependsOn : [
         {
           "containerName" : "postgres",
-          "condition" : "HEALTHY"
+          condition : "START"
         },
         {
           "containerName" : var.application_name,
-          "condition" : "HEALTHY"
+          condition : "START"
         }
       ],
       links : ["postgres:postgres"],

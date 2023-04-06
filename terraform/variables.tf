@@ -65,5 +65,41 @@ variable "volume_name" {
 
 variable "parameter_store_path_name" {
   type    = string
-  default = "turnit/flagsmith/"
+  default = "/turnit/flagsmith/"
+}
+
+variable "vpc_id" {
+  type = string
+}
+
+variable "lb_name" {
+  type = string
+}
+
+variable "subnet_id" {
+  type = string
+}
+
+variable "ec2_security_group_id" {
+  type = string
+}
+
+variable "ecs_execution_role_name" {
+  type = string
+}
+
+variable "ecs_task_role_name" {
+  type = string
+}
+
+variable "codedeploy_role_name" {
+  type = string
+}
+
+variable "ec2_instance_profile_name" {
+  type = string
+}
+
+variable "route53_zone_name" {
+  type = string
 }

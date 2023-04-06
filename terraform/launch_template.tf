@@ -3,7 +3,7 @@ resource "aws_launch_template" "default_launch_template" {
   image_id      = var.ami
   instance_type = var.instance_type
 
-  vpc_security_group_ids = [data.aws_security_group.vpc_security_group]
+  vpc_security_group_ids = [data.aws_security_group.ec2_security_group.id]
 
   user_data = base64encode(<<EOF
 #! /bin/bash
@@ -13,6 +13,6 @@ EOF
   )
 
   iam_instance_profile {
-    arn = data.aws_iam_instance_profile.iam_instance_profile.arn
+    arn = data.aws_iam_instance_profile.ec2_instance_profile.arn
   }
 }
