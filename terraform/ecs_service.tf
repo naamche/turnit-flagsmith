@@ -1,0 +1,22 @@
+resource "aws_ecs_service" "default_ecs_service" {
+  name            = var.ecs_service_name
+  cluster         = aws_ecs_cluster.default_ecs_cluster.id
+  task_definition = aws_ecs_task_definition.default_ecs_task_definition.arn
+
+  desired_count                      = 1
+  deployment_minimum_healthy_percent = 100
+  deployment_maximum_percent         = 200
+  force_new_deployment               = false
+  enable_execute_command             = true
+  enable_ecs_managed_tags            = true
+
+  lifecycle {
+    ignore_changes = [task_definition, desired_count, load_balancer]
+  }
+
+  load_balancer {
+    target_group_arn = element(aws_lb_target_group.default_target_groups[*].arn, 1)
+    container_name   = var.application_name
+    container_port   = var.application_port
+  }
+}
