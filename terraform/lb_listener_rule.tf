@@ -1,5 +1,5 @@
 resource "aws_lb_listener_rule" "default_lb_listener_rule" {
-  listener_arn = var.lb_listener_arn
+  listener_arn = data.aws_lb_listener.lb_listener.arn
   priority     = 100
 
   action {
@@ -9,7 +9,7 @@ resource "aws_lb_listener_rule" "default_lb_listener_rule" {
 
   condition {
     host_header {
-      values = [var.host_header]
+      values = [data.aws_ssm_parameter.domain_name]
     }
   }
   condition {

@@ -4,7 +4,7 @@ resource "aws_autoscaling_group" "default_autoscaling_group" {
   min_size              = 1
   desired_capacity      = 1
   health_check_type     = "EC2"
-  vpc_zone_identifier   = [var.subnet_id]
+  vpc_zone_identifier   = [data.aws_subnet.subnet.id]
   protect_from_scale_in = true
 
   launch_template {
