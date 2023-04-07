@@ -25,10 +25,6 @@ data "aws_subnets" "public_subnets" {
   }
 }
 
-data "aws_security_group" "ec2_security_group" {
-  name = var.ec2_security_group_name
-}
-
 data "aws_iam_role" "codedeploy_role" {
   name = var.codedeploy_role_name
 }

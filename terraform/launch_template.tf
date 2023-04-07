@@ -10,10 +10,7 @@ sudo echo "ECS_CLUSTER=${var.ecs_cluster_name}" >> /etc/ecs/ecs.config
 EOF
   )
 
-  network_interfaces {
-    associate_public_ip_address = true
-    security_groups             = [data.aws_security_group.ec2_security_group.id]
-  }
+  vpc_security_group_ids = [aws_security_group.ec2_security_group.id]
 
   iam_instance_profile {
     arn = data.aws_iam_instance_profile.ec2_instance_profile.arn

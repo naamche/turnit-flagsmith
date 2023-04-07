@@ -92,8 +92,19 @@ variable "ecs_task_role_name" {
   default = "turnit-flagsmith-ecs-task-role"
 }
 
-variable "vpc_name" {
+variable "all_addresses" {
   type    = string
+  default = "0.0.0.0/0"
+}
+
+
+variable "ec2_security_group_name" {
+  type    = string
+  default = "turnit-flagsmith-ec2-security-group"
+}
+
+variable "vpc_name" {
+  type = string
 }
 
 variable "public_subnet_names" {
@@ -109,10 +120,6 @@ variable "codedeploy_config_bucket_name" {
 }
 
 variable "lb_name" {
-  type = string
-}
-
-variable "ec2_security_group_name" {
   type = string
 }
 

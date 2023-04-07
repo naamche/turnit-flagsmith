@@ -6,15 +6,14 @@ resource "aws_lb_listener_rule" "default_lb_listener_rule" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.default_target_groups[0].arn
   }
-
-  condition {
-    host_header {
-      values = [var.host_name]
-    }
-  }
   condition {
     path_pattern {
       values = ["/*"]
+    }
+  }
+  condition {
+    host_header {
+      values = [var.host_name]
     }
   }
   lifecycle {
