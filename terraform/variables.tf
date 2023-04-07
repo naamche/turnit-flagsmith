@@ -3,14 +3,18 @@ variable "application_name" {
   default = "flagsmith"
 }
 
-variable "lb_target_group_names" {
-  type    = list(string)
-  default = ["flagsmith-blue-tg", "flagsmith-green-tg"]
+variable "host_name" {
+  type = string
 }
 
 variable "application_port" {
   type    = number
   default = 8000
+}
+
+variable "lb_target_group_names" {
+  type    = list(string)
+  default = ["flagsmith-blue-tg", "flagsmith-green-tg"]
 }
 
 variable "health_check_path" {
@@ -68,19 +72,21 @@ variable "parameter_store_path_name" {
   default = "/turnit/flagsmith/"
 }
 
-variable "vpc_id" {
-  type = string
+variable "vpc_cidr" {
+  type    = string
+  default = "10.0.0.0/16"
 }
 
 variable "lb_name" {
   type = string
 }
 
-variable "subnet_id" {
-  type = string
+variable "subnet_cidr" {
+  type    = string
+  default = "10.0.2.0/24"
 }
 
-variable "ec2_security_group_id" {
+variable "ec2_security_group_name" {
   type = string
 }
 

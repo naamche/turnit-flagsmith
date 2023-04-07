@@ -9,7 +9,7 @@ resource "aws_lb_listener_rule" "default_lb_listener_rule" {
 
   condition {
     host_header {
-      values = [data.aws_ssm_parameter.domain_name.value]
+      values = [var.host_name]
     }
   }
   condition {

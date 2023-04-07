@@ -1,5 +1,5 @@
 data "aws_vpc" "vpc" {
-  id = var.vpc_id
+  cidr_block = var.vpc_cidr
 }
 
 data "aws_lb" "lb" {
@@ -12,11 +12,11 @@ data "aws_lb_listener" "lb_listener" {
 }
 
 data "aws_subnet" "subnet" {
-  id = var.subnet_id
+  cidr_block = var.subnet_cidr
 }
 
 data "aws_security_group" "ec2_security_group" {
-  id = var.ec2_security_group_id
+  name = var.ec2_security_group_name
 }
 
 data "aws_iam_role" "ecs_execution_role" {
@@ -37,10 +37,6 @@ data "aws_iam_instance_profile" "ec2_instance_profile" {
 
 data "aws_route53_zone" "route53_zone" {
   name = var.route53_zone_name
-}
-
-data "aws_ssm_parameter" "domain_name" {
-  name = "${var.parameter_store_path_name}tfvars/DOMAIN_NAME"
 }
 
 data "aws_ssm_parameters_by_path" "postgres_ssm_parameters" {
