@@ -1,6 +1,6 @@
 variable "application_name" {
   type    = string
-  default = "flagsmith"
+  default = "turnit-flagsmith"
 }
 
 variable "host_name" {
@@ -14,7 +14,7 @@ variable "application_port" {
 
 variable "lb_target_group_names" {
   type    = list(string)
-  default = ["flagsmith-blue-tg", "flagsmith-green-tg"]
+  default = ["turnit-flagsmith-blue-tg", "turnit-flagsmith-green-tg"]
 }
 
 variable "health_check_path" {
@@ -29,37 +29,37 @@ variable "ami" {
 
 variable "instance_type" {
   type    = string
-  default = "t3.micro"
+  default = "t3.small"
 }
 
 variable "ecs_cluster_name" {
   type    = string
-  default = "flagsmith-ecs-cluster"
+  default = "turnit-flagsmith-ecs-cluster"
 }
 
 variable "ecs_service_name" {
   type    = string
-  default = "flagsmith-ecs-service"
+  default = "turnit-flagsmith-ecs-service"
 }
 
 variable "ecs_task_definition_family" {
   type    = string
-  default = "flagsmith-ecs-task-definition"
+  default = "turnit-flagsmith-ecs-task-definition"
 }
 
 variable "autoscaling_group_name" {
   type    = string
-  default = "flagsmith-asg"
+  default = "turnit-flagsmith-asg"
 }
 
 variable "launch_template_name" {
   type    = string
-  default = "flagsmith-launch-template"
+  default = "turnit-flagsmith-launch-template"
 }
 
 variable "codedeploy_deployment_group_name" {
   type    = string
-  default = "flagsmith-codedeploy-deployment-group"
+  default = "turnit-flagsmith-codedeploy-deployment-group"
 }
 
 variable "volume_name" {
@@ -72,29 +72,47 @@ variable "parameter_store_path_name" {
   default = "/turnit/flagsmith/"
 }
 
-variable "vpc_cidr" {
+variable "ecs_execution_role_policy_name" {
   type    = string
-  default = "10.0.0.0/16"
+  default = "turnit-flagsmith-ecs-execution-role-policy"
+}
+
+variable "ecs_execution_role_name" {
+  type    = string
+  default = "turnit-flagsmith-ecs-execution-role"
+}
+
+variable "ecs_task_role_policy_name" {
+  type    = string
+  default = "turnit-flagsmith-ecs-task-role-policy"
+}
+
+variable "ecs_task_role_name" {
+  type    = string
+  default = "turnit-flagsmith-ecs-task-role"
+}
+
+variable "vpc_name" {
+  type    = string
+}
+
+variable "public_subnet_names" {
+  type = list(string)
+}
+
+variable "cloudwatch_log_group_name" {
+  type = string
+}
+
+variable "codedeploy_config_bucket_name" {
+  type = string
 }
 
 variable "lb_name" {
   type = string
 }
 
-variable "subnet_cidr" {
-  type    = string
-  default = "10.0.2.0/24"
-}
-
 variable "ec2_security_group_name" {
-  type = string
-}
-
-variable "ecs_execution_role_name" {
-  type = string
-}
-
-variable "ecs_task_role_name" {
   type = string
 }
 

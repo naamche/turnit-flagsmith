@@ -3,14 +3,17 @@ resource "aws_launch_template" "default_launch_template" {
   image_id      = var.ami
   instance_type = var.instance_type
 
-  vpc_security_group_ids = [data.aws_security_group.ec2_security_group.id]
-
   user_data = base64encode(<<EOF
 #! /bin/bash
 sudo apt-get update
 sudo echo "ECS_CLUSTER=${var.ecs_cluster_name}" >> /etc/ecs/ecs.config
 EOF
   )
+
+  network_interfaces {
+    associate_public_ip_address = true
+    security_groups             = [data.aws_security_group.ec2_security_group.id]
+  }
 
   iam_instance_profile {
     arn = data.aws_iam_instance_profile.ec2_instance_profile.arn

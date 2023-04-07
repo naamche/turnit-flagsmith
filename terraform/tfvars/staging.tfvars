@@ -1,8 +1,10 @@
+vpc_name = "turnit-vpc-staging"
 lb_name                   = "turnit-lb-staging"
 ec2_security_group_name   = "turnit-backend-ec2-sg-staging"
-ecs_execution_role_name   = "turnit-backend-ecsexecution-role-staging"
-ecs_task_role_name        = "turnit-backend-ecstask-role-staging"
 codedeploy_role_name      = "turnit-backend-code-deploy-iam-staging"
+codedeploy_config_bucket_name = "turnit-backend-codedeploy-config-bucket-staging"
 ec2_instance_profile_name = "turnit-backend-ec2-instance-profile-staging"
 route53_zone_name         = "staging.useturnit.com"
 host_name                 = "config.staging.useturnit.com"
+cloudwatch_log_group_name = "turnit-backend-cw-staging"
+public_subnet_names = ["turnit-public-subnet-one-staging", "turnit-public-subnet-two-staging"]

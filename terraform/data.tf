@@ -1,5 +1,8 @@
 data "aws_vpc" "vpc" {
-  cidr_block = var.vpc_cidr
+  filter {
+    name   = "tag:Name"
+    values = [var.vpc_name]
+  }
 }
 
 data "aws_lb" "lb" {
@@ -11,20 +14,19 @@ data "aws_lb_listener" "lb_listener" {
   port              = 443
 }
 
-data "aws_subnet" "subnet" {
-  cidr_block = var.subnet_cidr
+data "aws_s3_bucket" "codedeploy_config_bucket" {
+  bucket = var.codedeploy_config_bucket_name
+}
+
+data "aws_subnets" "public_subnets" {
+  filter {
+    name   = "tag:Name"
+    values = var.public_subnet_names
+  }
 }
 
 data "aws_security_group" "ec2_security_group" {
   name = var.ec2_security_group_name
-}
-
-data "aws_iam_role" "ecs_execution_role" {
-  name = var.ecs_execution_role_name
-}
-
-data "aws_iam_role" "ecs_task_role" {
-  name = var.ecs_task_role_name
 }
 
 data "aws_iam_role" "codedeploy_role" {
@@ -37,6 +39,10 @@ data "aws_iam_instance_profile" "ec2_instance_profile" {
 
 data "aws_route53_zone" "route53_zone" {
   name = var.route53_zone_name
+}
+
+data "aws_cloudwatch_log_group" "cloudwatch_log_group" {
+  name = var.cloudwatch_log_group_name
 }
 
 data "aws_ssm_parameters_by_path" "postgres_ssm_parameters" {
