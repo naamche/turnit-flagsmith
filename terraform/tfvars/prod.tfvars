@@ -1,0 +1,9 @@
+vpc_name                      = "turnit-vpc-production"
+lb_name                       = "turnit-lb-production"
+codedeploy_role_name          = "turnit-backend-code-deploy-iam-production"
+codedeploy_config_bucket_name = "turnit-backend-codedeploy-config-bucket-production"
+ec2_instance_profile_name     = "turnit-backend-ec2-instance-profile-production"
+route53_zone_name             = "useturnit.com"
+host_name                     = "config.useturnit.com"
+cloudwatch_log_group_name     = "turnit-backend-cw-production"
+private_subnet_names          = ["turnit-private-subnet-one-production", "turnit-private-subnet-two-production"]
