@@ -107,7 +107,7 @@ variable "vpc_name" {
   type = string
 }
 
-variable "public_subnet_names" {
+variable "private_subnet_names" {
   type = list(string)
 }
 

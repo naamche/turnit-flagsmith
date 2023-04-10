@@ -18,10 +18,10 @@ data "aws_s3_bucket" "codedeploy_config_bucket" {
   bucket = var.codedeploy_config_bucket_name
 }
 
-data "aws_subnets" "public_subnets" {
+data "aws_subnets" "private_subnets" {
   filter {
     name   = "tag:Name"
-    values = var.public_subnet_names
+    values = var.private_subnet_names
   }
 }
 
