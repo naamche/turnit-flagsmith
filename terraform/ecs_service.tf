@@ -16,7 +16,7 @@ resource "aws_ecs_service" "default_ecs_service" {
 
   load_balancer {
     target_group_arn = element(aws_lb_target_group.default_target_groups[*].arn, 0)
-    container_name   = var.application_container_name
+    container_name   = var.application_name
     container_port   = var.application_port
   }
 

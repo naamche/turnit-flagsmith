@@ -1,6 +1,6 @@
 variable "application_name" {
   type    = string
-  default = "turnit-flagsmith"
+  default = "flagsmith"
 }
 
 variable "application_port" {
@@ -119,6 +119,11 @@ variable "codedeploy_iam_role_name" {
   default = "turnit-flagsmith-codedeploy-iam-role"
 }
 
+variable "cloudwatch_log_group_name" {
+  type = string
+  default = "turnit-flagsmith-cloudwatch-log-group"
+}
+
 variable "host_name" {
   type = string
 }
@@ -129,16 +134,6 @@ variable "vpc_name" {
 
 variable "private_subnet_names" {
   type = list(string)
-}
-
-variable "cloudwatch_log_group_name" {
-  type = string
-  default = "turnit-flagsmith-cloudwatch-log-group"
-}
-
-variable "application_container_name" {
-  type = string
-  default = "flagsmith"
 }
 
 variable "codedeploy_config_bucket_name" {
