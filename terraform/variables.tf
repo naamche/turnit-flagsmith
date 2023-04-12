@@ -10,7 +10,7 @@ variable "application_port" {
 
 variable "lb_target_group_names" {
   type    = list(string)
-  default = ["turnit-flagsmith-blue-tg", "turnit-flagsmith-green-tg"]
+  default = ["flagsmith-blue-tg", "flagsmith-green-tg"]
 }
 
 variable "health_check_path" {
@@ -30,32 +30,32 @@ variable "instance_type" {
 
 variable "ecs_cluster_name" {
   type    = string
-  default = "turnit-flagsmith-ecs-cluster"
+  default = "flagsmith-ecs-cluster"
 }
 
 variable "ecs_service_name" {
   type    = string
-  default = "turnit-flagsmith-ecs-service"
+  default = "flagsmith-ecs-service"
 }
 
 variable "ecs_task_definition_family" {
   type    = string
-  default = "turnit-flagsmith-ecs-task-definition"
+  default = "flagsmith-ecs-task-definition"
 }
 
 variable "autoscaling_group_name" {
   type    = string
-  default = "turnit-flagsmith-asg"
+  default = "flagsmith-asg"
 }
 
 variable "launch_template_name" {
   type    = string
-  default = "turnit-flagsmith-launch-template"
+  default = "flagsmith-launch-template"
 }
 
 variable "codedeploy_deployment_group_name" {
   type    = string
-  default = "turnit-flagsmith-codedeploy-deployment-group"
+  default = "flagsmith-codedeploy-deployment-group"
 }
 
 variable "volume_name" {
@@ -65,27 +65,27 @@ variable "volume_name" {
 
 variable "parameter_store_path_name" {
   type    = string
-  default = "/turnit/flagsmith/"
+  default = "/flagsmith/"
 }
 
 variable "ecs_execution_role_policy_name" {
   type    = string
-  default = "turnit-flagsmith-ecs-execution-role-policy"
+  default = "flagsmith-ecs-execution-role-policy"
 }
 
 variable "ecs_execution_role_name" {
   type    = string
-  default = "turnit-flagsmith-ecs-execution-role"
+  default = "flagsmith-ecs-execution-role"
 }
 
 variable "ecs_task_role_policy_name" {
   type    = string
-  default = "turnit-flagsmith-ecs-task-role-policy"
+  default = "flagsmith-ecs-task-role-policy"
 }
 
 variable "ecs_task_role_name" {
   type    = string
-  default = "turnit-flagsmith-ecs-task-role"
+  default = "flagsmith-ecs-task-role"
 }
 
 variable "all_addresses" {
@@ -96,32 +96,32 @@ variable "all_addresses" {
 
 variable "ec2_security_group_name" {
   type    = string
-  default = "turnit-flagsmith-ec2-security-group"
+  default = "flagsmith-ec2-security-group"
 }
 
 variable "ec2_instance_role_name" {
   type = string
-  default = "turnit-flagsmith-ec2-instance-role"
+  default = "flagsmith-ec2-instance-role"
 }
 
 variable "ec2_iam_instance_profile_name" {
   type = string
-  default = "turnit-flagsmith-ec2-iam-instance-profile"
+  default = "flagsmith-ec2-iam-instance-profile"
 }
 
 variable "codedeploy_policy_name" {
   type = string
-  default = "turnit-flagsmith-codedeploy-policy"
+  default = "flagsmith-codedeploy-policy"
 }
 
 variable "codedeploy_iam_role_name" {
   type = string
-  default = "turnit-flagsmith-codedeploy-iam-role"
+  default = "flagsmith-codedeploy-iam-role"
 }
 
 variable "cloudwatch_log_group_name" {
   type = string
-  default = "turnit-flagsmith-cloudwatch-log-group"
+  default = "flagsmith-cloudwatch-log-group"
 }
 
 variable "host_name" {
