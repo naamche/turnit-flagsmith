@@ -13,6 +13,6 @@ EOF
   vpc_security_group_ids = [aws_security_group.ec2_security_group.id]
 
   iam_instance_profile {
-    arn = data.aws_iam_instance_profile.ec2_instance_profile.arn
+    arn = aws_iam_instance_profile.ec2_iam_instance_profile.arn
   }
 }

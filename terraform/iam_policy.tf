@@ -19,7 +19,7 @@ resource "aws_iam_policy" "ecs_execution_role_policy" {
           "logs:CreateLogGroup",
         ],
         "Effect" : "Allow",
-        "Resource" : "${data.aws_cloudwatch_log_group.cloudwatch_log_group.arn}:*"
+        "Resource" : "${aws_cloudwatch_log_group.default_cloudwatch_log_group.arn}:*"
       },
       {
         "Effect" : "Allow",
@@ -34,4 +34,49 @@ resource "aws_iam_policy" "ecs_execution_role_policy" {
       }
     ]
   })
+}
+
+resource "aws_iam_policy" "code_deploy_ecs_modification_s3_policy" {
+  name        = var.codedeploy_policy_name
+  description = "Code Deploy Policy for ${var.application_name}"
+
+  policy = jsonencode(
+    {
+      "Version" : "2012-10-17",
+      "Statement" : [
+        {
+          "Action" : [
+            "ecs:DescribeServices",
+            "ecs:CreateTaskSet",
+            "ecs:UpdateServicePrimaryTaskSet",
+            "ecs:DeleteTaskSet",
+            "elasticloadbalancing:DescribeTargetGroups",
+            "elasticloadbalancing:DescribeListeners",
+            "elasticloadbalancing:ModifyListener",
+            "elasticloadbalancing:DescribeRules",
+            "elasticloadbalancing:ModifyRule",
+            "cloudwatch:DescribeAlarms",
+            "s3:GetObject",
+            "s3:GetObjectVersion"
+          ],
+          "Resource" : "*",
+          "Effect" : "Allow"
+        },
+        {
+          "Action" : [
+            "iam:PassRole"
+          ],
+          "Effect" : "Allow",
+          "Resource" : "*",
+          "Condition" : {
+            "StringLike" : {
+              "iam:PassedToService" : [
+                "ecs-tasks.amazonaws.com"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  )
 }

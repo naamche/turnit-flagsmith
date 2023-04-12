@@ -3,10 +3,6 @@ variable "application_name" {
   default = "turnit-flagsmith"
 }
 
-variable "host_name" {
-  type = string
-}
-
 variable "application_port" {
   type    = number
   default = 8000
@@ -103,6 +99,30 @@ variable "ec2_security_group_name" {
   default = "turnit-flagsmith-ec2-security-group"
 }
 
+variable "ec2_instance_role_name" {
+  type = string
+  default = "turnit-flagsmith-ec2-instance-role"
+}
+
+variable "ec2_iam_instance_profile_name" {
+  type = string
+  default = "turnit-flagsmith-ec2-iam-instance-profile"
+}
+
+variable "codedeploy_policy_name" {
+  type = string
+  default = "turnit-flagsmith-codedeploy-policy"
+}
+
+variable "codedeploy_iam_role_name" {
+  type = string
+  default = "turnit-flagsmith-codedeploy-iam-role"
+}
+
+variable "host_name" {
+  type = string
+}
+
 variable "vpc_name" {
   type = string
 }
@@ -113,6 +133,12 @@ variable "private_subnet_names" {
 
 variable "cloudwatch_log_group_name" {
   type = string
+  default = "turnit-flagsmith-cloudwatch-log-group"
+}
+
+variable "application_container_name" {
+  type = string
+  default = "flagsmith"
 }
 
 variable "codedeploy_config_bucket_name" {
@@ -120,14 +146,6 @@ variable "codedeploy_config_bucket_name" {
 }
 
 variable "lb_name" {
-  type = string
-}
-
-variable "codedeploy_role_name" {
-  type = string
-}
-
-variable "ec2_instance_profile_name" {
   type = string
 }
 

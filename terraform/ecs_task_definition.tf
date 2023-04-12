@@ -26,7 +26,7 @@ resource "aws_ecs_task_definition" "default_ecs_task_definition" {
 
   container_definitions = jsonencode([
     {
-      name : "flagsmith"
+      name : var.application_container_name
       image : "flagsmith/flagsmith:latest"
       memory : 900
       portMappings : [
@@ -59,7 +59,7 @@ resource "aws_ecs_task_definition" "default_ecs_task_definition" {
       entryPoint : ["python", "manage.py", "runprocessor", "--sleepintervalms", "500"]
       dependsOn : [
         {
-          "containerName" : "flagsmith"
+          "containerName" : var.application_container_name
           condition : "START"
         }
       ]
