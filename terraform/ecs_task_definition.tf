@@ -15,15 +15,6 @@ resource "aws_ecs_task_definition" "default_ecs_task_definition" {
   network_mode             = "bridge"
   requires_compatibilities = ["EC2"]
 
-  volume {
-    name = var.volume_name
-    docker_volume_configuration {
-      scope         = "shared"
-      autoprovision = true
-      driver        = "local"
-    }
-  }
-
   container_definitions = jsonencode([
     {
       name : var.application_name

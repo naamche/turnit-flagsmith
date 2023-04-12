@@ -58,11 +58,6 @@ variable "codedeploy_deployment_group_name" {
   default = "flagsmith-codedeploy-deployment-group"
 }
 
-variable "volume_name" {
-  type    = string
-  default = "pgdata"
-}
-
 variable "parameter_store_path_name" {
   type    = string
   default = "/flagsmith/"
