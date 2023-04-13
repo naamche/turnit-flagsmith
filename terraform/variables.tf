@@ -60,7 +60,7 @@ variable "codedeploy_deployment_group_name" {
 
 variable "parameter_store_path_name" {
   type    = string
-  default = "/flagsmith/"
+  default = "/turnit/flagsmith/"
 }
 
 variable "ecs_execution_role_policy_name" {

@@ -1,6 +1,5 @@
 terraform {
   backend "s3" {
-    profile = "turnit-production"
   }
   required_providers {
     aws = {
@@ -18,5 +17,4 @@ provider "aws" {
       "Manager" : "Terraform"
     }
   }
-  profile = "turnit-production"
 }
