@@ -51,3 +51,25 @@ resource "aws_codedeploy_deployment_group" "default_codedeploy_deployment_group"
     }
   }
 }
+
+resource "aws_s3_object" "code_deploy_appspec_file" {
+  bucket = data.aws_s3_bucket.codedeploy_config_bucket.id
+  key    = "${var.application_name}/appspec.json"
+  content = jsonencode({
+    "version" : 0.0,
+    "Resources" : [
+      {
+        "TargetService" : {
+          "Type" : "AWS::ECS::Service",
+          "Properties" : {
+            "TaskDefinition" : aws_ecs_task_definition.default_ecs_task_definition.arn,
+            "LoadBalancerInfo" : {
+              "ContainerName" : var.application_name,
+              "ContainerPort" : var.application_port
+            }
+          }
+        }
+      }
+    ]
+  })
+}
